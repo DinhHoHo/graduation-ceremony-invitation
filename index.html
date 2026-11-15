@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>grad u ate — Hồ Phú Vinh</title>
+<meta name="description" content="Thư mời lễ tốt nghiệp của Hồ Phú Vinh · 26.11.2026 · 11:00 · ĐH Khoa học Tự nhiên – 227 Nguyễn Văn Cừ">
+<meta property="og:type" content="website">
+<meta property="og:title" content="grad u ate — u r invited.">
+<meta property="og:description" content="Lễ tốt nghiệp của Hồ Phú Vinh · Thứ năm, 26.11.2026 · 11:00 · ĐH Khoa học Tự nhiên">
+<meta property="og:image" content="https://dinhhoho.github.io/graduation-ceremony-invitation/assets/images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#89CC04">
+<link rel="icon" href="assets/images/favicon.png">
+<style>
+:root{
+  --g:#89CC04; --w:#FFFFFF; --k:#000000;
+  --bar:52px;
+  --font: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--w);color:var(--k);font-family:var(--font)}
+html.locked,html.locked body{overflow:hidden;height:100%}
+body{text-transform:lowercase;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-transform:lowercase}
+a{color:inherit}
+.blur{filter:blur(1.4px)}
+.soft{filter:blur(.5px)}
+
+/* grain overlay used on several layers */
+.grain{position:absolute;inset:-50%;pointer-events:none;opacity:.14;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.2 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation:grain 1s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+
+/* ============ HERO ============ */
+#hero{position:relative;height:100vh;height:100svh;background:var(--g);overflow:hidden;display:grid;place-items:center}
+#title{transition:opacity .25s}
+.hero-ui{position:absolute;font-size:12px;letter-spacing:.02em;line-height:1.5}
+.hero-ui.tl{top:20px;left:22px}
+.hero-ui.tr{top:20px;right:22px;text-align:right}
+.hero-ui.bl{bottom:22px;left:22px}
+.hero-ui.br{bottom:22px;right:22px;text-align:right}
+.load{display:inline-block;width:120px;height:9px;border:1px solid var(--k);vertical-align:middle;margin-left:6px;position:relative}
+.load i{position:absolute;inset:1px;right:auto;width:0;background:var(--k);animation:load 2.2s steps(14) forwards}
+@keyframes load{to{width:calc(100% - 2px)}}
+.barcode{display:flex;gap:2px;height:26px;align-items:stretch;justify-content:flex-end;margin-top:6px}
+.barcode b{display:block;background:var(--k)}
+.ghost{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:46vw;white-space:nowrap;opacity:.05;pointer-events:none;letter-spacing:-.06em;line-height:1}
+#title{position:relative;font-weight:400;font-size:clamp(64px,16.5vw,250px);letter-spacing:-.055em;line-height:1;white-space:nowrap;user-select:none;z-index:2}
+#title .t{display:inline-block}
+.u{position:relative;display:inline-block;cursor:pointer;margin:0 .02em}
+.u .u-letter{display:inline-block;transition:opacity .2s, transform .3s}
+.u img{position:absolute;left:50%;top:48%;height:1.3em;width:auto;max-width:none;
+  transform:translate(-50%,-50%) rotate(-6deg) scale(.2);opacity:0;pointer-events:none;
+  transition:transform .45s cubic-bezier(.2,1.4,.4,1),opacity .2s;filter:drop-shadow(8px 10px 0 var(--k))}
+.u:hover .u-letter,.u.on .u-letter{opacity:0;transform:scale(.6)}
+.u:hover img,.u.on img{opacity:1;transform:translate(-50%,-50%) rotate(-6deg) scale(1)}
+.u-tag{position:absolute;left:50%;top:-.42em;transform:translateX(-50%);font-size:13px;letter-spacing:0;white-space:nowrap;
+  background:var(--k);color:var(--g);padding:3px 7px;opacity:1;transition:opacity .2s;filter:none}
+.u:hover .u-tag,.u.on .u-tag{opacity:0}
+.hint{position:absolute;bottom:13vh;left:50%;transform:translateX(-50%);font-size:14px;display:flex;gap:10px;align-items:center;white-space:nowrap}
+.hint .arr{display:inline-block;animation:bob 1.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(5px)}}
+
+/* split clones */
+.clone{position:fixed;z-index:70;display:flex;align-items:center;justify-content:center;white-space:nowrap;letter-spacing:-.055em;pointer-events:none;filter:blur(1.4px);will-change:transform,clip-path}
+
+/* ============ MARQUEE BARS ============ */
+.bar{position:fixed;left:0;right:0;height:var(--bar);z-index:55;background:var(--g);overflow:hidden;display:flex;align-items:center;
+  opacity:0;pointer-events:none;transition:opacity .35s}
+.bar.on{opacity:1;pointer-events:auto}
+.bar.top{top:0;border-bottom:2px solid var(--k)}
+.bar.bot{bottom:0;border-top:2px solid var(--k)}
+.track{display:flex;white-space:nowrap;animation:mq 22s linear infinite;will-change:transform}
+.bar.bot .track{animation-direction:reverse;animation-duration:26s}
+.track span{font-size:30px;letter-spacing:-.05em;padding:0 22px;filter:blur(.7px)}
+.track span.dot{font-size:14px;padding:0;filter:none;align-self:center}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ============ MAIN ============ */
+main{padding:var(--bar) 0 var(--bar)}
+section.s{position:relative;padding:72px 6vw 72px calc(6vw + 70px);overflow:hidden}
+.kicker{font-size:13px;display:flex;gap:10px;align-items:center;margin-bottom:22px}
+.kicker b{display:inline-block;width:10px;height:10px;background:var(--k)}
+.big{font-size:clamp(48px,10vw,150px);letter-spacing:-.055em;line-height:.9;font-weight:400}
+
+/* ============ VINYL ============ */
+#vinyl{min-height:calc(100vh - var(--bar)*2);display:flex;flex-direction:column;justify-content:center;background:var(--w)}
+#vinyl .bgtype{position:absolute;right:-2vw;top:30px;font-size:22vw;letter-spacing:-.06em;line-height:.8;opacity:.045;pointer-events:none;text-align:right}
+.stage{position:relative;width:min(980px,100%);margin:0 auto;aspect-ratio:2/1;container-type:inline-size;cursor:pointer}
+.cover{position:absolute;left:4cqw;top:6cqw;width:38cqw;height:38cqw;background:var(--g);z-index:2;
+  box-shadow:1.4cqw 1.4cqw 0 var(--k);transition:transform 1.2s cubic-bezier(.6,0,.2,1);overflow:hidden;border:2px solid var(--k)}
+.cover .ct{position:absolute;right:1.6cqw;top:50%;translate:0 -50%;transform:scaleX(-1);text-align:left;font-size:3.75cqw;line-height:1.2;letter-spacing:-.035em;white-space:nowrap;filter:blur(.14cqw)}
+.cover .opening{position:absolute;right:0;top:0;bottom:0;width:.5cqw;background:var(--k);opacity:.15}
+.stage.s2 .cover{transform:translateX(-1.5cqw) rotate(-3deg)}
+.record{position:absolute;left:0;top:0;width:34cqw;height:34cqw;z-index:1;
+  --x:23;--y:25;transform:translate(calc(var(--x) * 1cqw - 17cqw),calc(var(--y) * 1cqw - 17cqw));
+  transition:transform 1.3s cubic-bezier(.65,0,.25,1)}
+.stage.s1 .record{--x:41}
+.stage.s2 .record{--x:71;transition-duration:1.5s}
+.stage.s2 .record .disc{animation:lift 1.5s cubic-bezier(.65,0,.25,1)}
+@keyframes lift{50%{scale:1.07;filter:drop-shadow(1.6cqw 2cqw 0 rgba(0,0,0,.35))}}
+.disc{position:absolute;inset:0;border-radius:50%;
+  background:
+   radial-gradient(circle at 50% 50%, transparent 0 30%, rgba(255,255,255,.0) 30%),
+   repeating-radial-gradient(circle at 50% 50%, #000 0 .45cqw, #161616 .5cqw .6cqw),
+   #000;
+  box-shadow:0 0 0 .3cqw var(--k)}
+.disc::before{content:"";position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 30deg, transparent 0 12%, rgba(255,255,255,.16) 16%, transparent 22% 58%, rgba(255,255,255,.12) 64%, transparent 70%)}
+.disc .label{position:absolute;left:50%;top:50%;width:12cqw;height:12cqw;margin:-6cqw 0 0 -6cqw;border-radius:50%;background:var(--g);
+  display:grid;place-items:center;font-size:1.5cqw;letter-spacing:-.04em}
+.disc .label span{filter:blur(.12cqw)}
+.disc .label small{position:absolute;bottom:2cqw;font-size:.9cqw}
+.disc .label::after{content:"";position:absolute;width:1cqw;height:1cqw;border-radius:50%;background:var(--w);border:.15cqw solid var(--k)}
+.disc .label small{display:none}
+.stage.s3.armrest .arm{transform:rotate(-6deg)}
+@keyframes spin{to{rotate:360deg}}
+.tt{position:absolute;left:52cqw;top:4cqw;width:44cqw;height:42cqw;background:var(--w);border:2px solid var(--k);border-radius:1.4cqw;
+  box-shadow:1.4cqw 1.4cqw 0 var(--g), 1.4cqw 1.4cqw 0 2px var(--k)}
+.platter{position:absolute;left:1cqw;top:3cqw;width:36cqw;height:36cqw;border-radius:50%;background:var(--k);
+  box-shadow:inset 0 0 0 .6cqw #222, inset 0 0 0 1.2cqw var(--k)}
+.platter::after{content:"";position:absolute;left:50%;top:50%;width:1.2cqw;height:1.2cqw;margin:-.6cqw;border-radius:50%;background:var(--w)}
+.tt .brand{position:absolute;right:1.6cqw;bottom:1.4cqw;font-size:1.25cqw;text-align:right;line-height:1.3}
+.tt .knob{position:absolute;right:2cqw;width:3.2cqw;height:3.2cqw;border:2px solid var(--k);border-radius:50%;background:var(--w)}
+.tt .knob::after{content:"";position:absolute;left:50%;top:.3cqw;width:2px;height:1.1cqw;background:var(--k);transform:translateX(-50%)}
+.tt .led{position:absolute;left:2cqw;bottom:1.6cqw;display:flex;gap:.6cqw;align-items:center;font-size:1.1cqw}
+.tt .led i{width:1cqw;height:1cqw;border-radius:50%;border:1px solid var(--k);background:var(--w)}
+.stage.playing .tt .led i{background:var(--g);box-shadow:0 0 .8cqw var(--g)}
+.pivot{position:absolute;left:36.2cqw;top:2.2cqw;width:5.6cqw;height:5.6cqw;border-radius:50%;background:var(--w);border:2px solid var(--k);z-index:6}
+.pivot::after{content:"";position:absolute;inset:1.4cqw;border-radius:50%;background:var(--k)}
+.arm{position:absolute;left:91cqw;top:9cqw;width:0;height:0;z-index:5;transform:rotate(-6deg);transition:transform 1.1s cubic-bezier(.5,0,.2,1)}
+.stage.s3 .arm{transform:rotate(24deg)}
+.stage.ready .arm .rod,.stage.ready .arm .head,.stage.ready .arm .weight{cursor:pointer}
+.stage.ready .arm:hover .head{background:#222;outline:2px solid var(--g)}
+.stage.ready .record{cursor:grab;touch-action:none}
+.stage.ready .record.grabbing{cursor:grabbing}
+.stage.ready{cursor:default}
+.arm .rod{position:absolute;left:-.45cqw;top:0;width:.9cqw;height:22cqw;background:var(--k);border-radius:.5cqw}
+.arm .head{position:absolute;left:-1.5cqw;top:21cqw;width:3cqw;height:4.2cqw;background:var(--k);border-radius:.3cqw;transform:rotate(-14deg)}
+.arm .head::after{content:"";position:absolute;left:.6cqw;bottom:-.8cqw;width:.6cqw;height:1cqw;background:var(--g)}
+.arm .weight{position:absolute;left:-1.6cqw;top:-4.2cqw;width:3.2cqw;height:3.4cqw;background:var(--k);border-radius:.4cqw}
+.notes{position:absolute;left:71cqw;top:4cqw;pointer-events:none;z-index:7}
+.notes i{position:absolute;font-style:normal;font-size:3cqw;opacity:0}
+.stage.playing .notes i{animation:note 2.6s ease-out infinite}
+.notes i:nth-child(2){animation-delay:.9s!important;left:6cqw}
+.notes i:nth-child(3){animation-delay:1.7s!important;left:-5cqw}
+@keyframes note{0%{opacity:0;transform:translate(0,0) rotate(0)}20%{opacity:1}100%{opacity:0;transform:translate(3cqw,-9cqw) rotate(18deg)}}
+.stage-cap{display:flex;justify-content:space-between;gap:16px;width:min(980px,100%);margin:34px auto 0;font-size:13px;border-top:2px solid var(--k);padding-top:12px}
+.stage-cap .np b{font-weight:400;background:var(--g);padding:1px 6px}
+.audio-hint{display:none;background:var(--k);color:var(--g);padding:2px 8px;animation:blink 1s steps(2) infinite}
+.needtap .audio-hint{display:inline-block}
+@keyframes blink{50%{opacity:.3}}
+
+/* ============ PLAYER ============ */
+#player{position:fixed;left:14px;top:50%;z-index:58;width:58px;background:var(--w);border:2px solid var(--k);box-shadow:5px 5px 0 var(--k);
+  transform:translate(-140%,-50%);transition:transform .7s cubic-bezier(.2,1.3,.4,1);display:flex;flex-direction:column;align-items:center}
+#player.on{transform:translate(0,-50%)}
+#player .pbar{width:100%;background:var(--g);border-bottom:2px solid var(--k);font-size:9px;padding:4px 0;text-align:center}
+#player .pbtn{width:40px;height:40px;display:grid;place-items:center;margin:6px 0 0;border:2px solid var(--k);background:var(--w);transition:background .15s, transform .1s}
+#player .pbtn:hover{background:var(--g)}
+#player .pbtn:active{transform:translate(2px,2px)}
+#player .pbtn svg{width:16px;height:16px}
+#player .pbtn.main{background:var(--k);color:var(--g)}
+#player .pbtn.main:hover{background:var(--k)}
+#player .num{font-size:10px;margin:8px 0 2px}
+#player .vt{writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;max-height:170px;overflow:hidden;white-space:nowrap;margin:6px 0;text-transform:none}
+#npTitle{text-transform:none}
+.eq{display:flex;gap:2px;height:16px;align-items:flex-end;margin:4px 0 10px}
+.eq i{width:4px;background:var(--k);height:3px}
+.isplaying .eq i{animation:eq .6s ease-in-out infinite alternate}
+.eq i:nth-child(2){animation-delay:.15s!important}.eq i:nth-child(3){animation-delay:.3s!important}.eq i:nth-child(4){animation-delay:.45s!important}
+@keyframes eq{from{height:3px}to{height:16px}}
+
+/* ============ INVITE ============ */
+#invite{background:var(--w);padding-top:40px;padding-bottom:110px;transition:opacity 1s, transform 1s cubic-bezier(.2,.8,.2,1)}
+#invite.gate{opacity:0;transform:translateY(60px)}
+.inv-head{position:relative;margin-bottom:46px}
+.inv-head .big{filter:blur(1.2px)}
+.inv-head .sub{font-size:16px;margin-top:14px}
+.inv-head .greet{display:inline-block;margin-top:18px;background:var(--g);padding:6px 12px;font-size:18px;border:2px solid var(--k)}
+.inv-head{min-height:440px}
+.stamp{position:absolute;right:2vw;top:0;width:135px;height:135px;z-index:2;border-radius:50%;border:2px solid var(--k);display:grid;place-items:center;text-align:center;font-size:12px;line-height:1.3;
+  background:var(--g);transform:rotate(12deg);animation:wob 6s ease-in-out infinite}
+.stamp::before{content:"";position:absolute;inset:8px;border-radius:50%;border:1px dashed var(--k)}
+.stamp strong{display:block;font-size:27px;font-weight:400;letter-spacing:-.05em}
+.me{position:absolute;right:calc(2vw + 40px);top:118px;width:min(340px,30vw);rotate:4deg;filter:drop-shadow(1.5px 0 0 #000) drop-shadow(-1.5px 0 0 #000) drop-shadow(0 1.5px 0 #000) drop-shadow(0 -1.5px 0 #000) drop-shadow(7px 8px 0 #89CC04);transition:rotate .3s, scale .3s;z-index:1}
+.me:hover{rotate:-3deg;scale:1.05}
+@keyframes wob{50%{transform:rotate(4deg) scale(1.04)}}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:26px;position:relative}
+.win{position:relative;background:var(--w);border:2px solid var(--k);box-shadow:7px 7px 0 var(--k);align-self:start}
+.win.green{background:var(--g)}
+.win-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 8px 6px 10px;border-bottom:2px solid var(--k);font-size:12px;background:var(--w);cursor:grab;user-select:none;touch-action:auto}
+.win.green .win-bar{background:var(--w)}
+.win-bar .dots{display:flex;gap:4px}
+.win-bar .dots button{width:16px;height:16px;border:1.5px solid var(--k);font-size:11px;line-height:12px;display:grid;place-items:center;background:var(--w)}
+.win-bar .dots button:hover{background:var(--g)}
+.win-body{padding:20px 20px 22px;font-size:16px;line-height:1.5}
+.win.min .win-body{display:none}
+.win h3{font-weight:400;font-size:clamp(28px,3.4vw,46px);letter-spacing:-.045em;line-height:1;margin-bottom:10px}
+.win .meta{font-size:13px;opacity:1}
+.w-hi{grid-column:1 / span 7}
+.w-who{grid-column:8 / span 5;margin-top:40px;rotate:1.5deg}
+.w-when{grid-column:1 / span 6}
+.w-where{grid-column:7 / span 6;margin-top:30px;rotate:-1deg}
+.w-dress{grid-column:1 / span 5;margin-top:24px;rotate:-1.5deg}
+.w-rsvp{grid-column:3 / span 8;margin-top:10px}
+.fb{text-transform:none;font-weight:400;background:var(--g);padding:0 6px;border:1.5px solid var(--k);text-decoration:none}
+.fb:hover{background:var(--k);color:var(--g)}
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0 18px}
+.cd div{border:2px solid var(--k);text-align:center;padding:10px 0 8px;background:var(--w)}
+.cd b{display:block;font-weight:400;font-size:clamp(26px,3vw,40px);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.cd span{font-size:11px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--k);background:var(--k);color:var(--g);padding:10px 16px;font-size:15px;text-decoration:none;box-shadow:4px 4px 0 var(--g),4px 4px 0 2px var(--k);transition:transform .1s, box-shadow .1s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--g),6px 6px 0 2px var(--k)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--g),1px 1px 0 2px var(--k)}
+.btn.ghost-btn{background:var(--w);color:var(--k)}
+.sched li{list-style:none;display:grid;grid-template-columns:62px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--k)}
+.sched li:last-child{border-bottom:0}
+.sched time{font-variant-numeric:tabular-nums}
+.sw{display:flex;gap:8px;margin:4px 0 14px}
+.sw i{width:46px;height:46px;border:2px solid var(--k)}
+.rsvp-btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px}
+.rsvp-out{margin-top:18px;padding:12px 14px;border:2px dashed var(--k);display:none}
+.rsvp-out.on{display:block}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .7s, transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.floaty{position:absolute;pointer-events:none;font-size:26px;animation:fl 5s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-14px) rotate(15deg)}}
+
+/* ============ MAP ============ */
+#map{background:var(--g)}
+#map .bgtype{position:absolute;left:-1vw;bottom:-3vw;font-size:20vw;letter-spacing:-.06em;line-height:.8;opacity:.07;pointer-events:none;white-space:nowrap}
+.map-wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:34px;align-items:start;position:relative}
+.map-card{background:var(--w);border:2px solid var(--k);box-shadow:8px 8px 0 var(--k);position:relative}
+.map-card .win-bar{cursor:default}
+.map-card svg,.map-card iframe{display:block;width:100%;aspect-ratio:600/420;border:0;height:auto}
+.map-actions{display:flex;flex-wrap:wrap;gap:14px;margin:22px 0 30px}
+.addr{font-size:18px;line-height:1.45;margin-top:8px}
+.park{display:grid;gap:14px}
+.pk{text-transform:none;display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--w);border:2px solid var(--k);padding:14px;transition:transform .2s}
+.pk:hover{transform:translateX(6px)}
+.pk .pn{width:44px;height:44px;background:var(--k);color:var(--w);display:grid;place-items:center;font-size:22px}
+.pk h4{font-weight:400;font-size:18px;letter-spacing:-.02em}
+.pk p{font-size:14px;line-height:1.45;margin-top:3px}
+.tag{display:inline-block;font-size:11px;border:1px solid var(--k);padding:1px 6px;margin-top:6px;margin-right:4px;background:var(--g)}
+.pin{animation:pin 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes pin{50%{transform:translateY(-8px)}}
+.walk{stroke-dasharray:6 7;animation:dash 1s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-13}}
+
+/* ============ THANKS ============ */
+#thanks{padding:0;background:var(--k)}
+.vframe{position:relative;width:100%;height:min(calc(100vh - 104px), max(56.25vw, 70vh));min-height:240px;overflow:hidden;container-type:size;background:var(--k)}
+.vframe video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vframe .over{position:absolute;inset:0;padding:1.5cqh 2cqw;display:flex;flex-direction:column;justify-content:space-between;color:var(--w);pointer-events:none}
+.vframe .ln{display:flex;justify-content:space-between;align-items:baseline;font-size:min(24cqh,15cqw);line-height:.86;letter-spacing:-.055em;filter:blur(1px)}
+
+@media (max-width:820px){
+  section.s{padding:56px 5vw 56px calc(5vw + 64px)}
+  .grid{grid-template-columns:1fr;gap:28px}
+  .grid .win{grid-column:1 / -1!important;margin-top:0!important}
+  .map-wrap{grid-template-columns:1fr}
+  .stamp{width:94px;height:94px;font-size:9px;right:0;top:4px}
+  .stamp strong{font-size:19px}
+  #player{left:8px;width:52px}
+  #player .pbtn{width:36px;height:36px}
+  .track span{font-size:24px}
+  .hero-ui.tr,.hero-ui.br{display:none}
+  .stage-cap{flex-direction:column;gap:6px}
+  .inv-head{min-height:0}
+  .me{position:relative;display:block;right:auto;top:auto;width:72%;max-width:300px;margin:26px auto 0}
+}
+@media (prefers-reduced-motion:reduce){
+  .grain,.track{animation:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<section id="hero" aria-label="mở thiệp">
+  <div class="grain"></div>
+  <div class="ghost blur">2026</div>
+  <div class="hero-ui tl">invitation_v1.0.exe<br>loading<span class="load"><i></i></span></div>
+  <div class="hero-ui tr">class of 2026<br>✦ for: <span data-guest>bạn</span></div>
+  <div class="hero-ui bl">(c) 2026 — <span data-k="name"></span></div>
+  <div class="hero-ui br">side a<div class="barcode" id="barcode"></div></div>
+
+  <h1 id="title"><span class="t blur">grad</span> <span class="u" id="u" role="button" tabindex="0" aria-label="chữ u — nhấn để mở thiệp"><span class="u-letter blur">u</span><img id="uimg" alt="ảnh của tôi"></span> <span class="t blur">ate</span></h1>
+
+</section>
+
+<!-- ================= MARQUEE BARS ================= -->
+<div class="bar top" id="barTop"><div class="track"></div></div>
+<div class="bar bot" id="barBot"><div class="track"></div></div>
+
+<!-- ================= PLAYER ================= -->
+<aside id="player" aria-label="điều khiển nhạc">
+  <div class="pbar">player</div>
+  <button class="pbtn" id="pPrev" aria-label="bài trước"><svg viewBox="0 0 16 16"><path d="M3 2h2v12H3zM14 2v12L6 8z" fill="currentColor"/></svg></button>
+  <button class="pbtn main" id="pPlay" aria-label="phát / dừng"><svg viewBox="0 0 16 16" id="pIcon"><path d="M4 2v12l10-6z" fill="currentColor"/></svg></button>
+  <button class="pbtn" id="pNext" aria-label="bài tiếp"><svg viewBox="0 0 16 16"><path d="M11 2h2v12h-2zM2 2v12l8-6z" fill="currentColor"/></svg></button>
+  <div class="num" id="pNum">01/03</div>
+  <div class="vt" id="pTitle">grad u ate</div>
+  <div class="eq"><i></i><i></i><i></i><i></i></div>
+</aside>
+
+<main id="main">
+
+  <!-- ================= VINYL ================= -->
+  <section class="s" id="vinyl">
+    <div class="bgtype blur">side a</div>
+    <div class="stage" id="stage" title="nhấn để bỏ qua">
+      <div class="tt">
+        <div class="platter"></div>
+        <div class="pivot"></div>
+        <div class="knob" style="top:12cqw"></div>
+        <div class="knob" style="top:17cqw"></div>
+        <div class="led"><i></i>33 rpm</div>
+        <div class="brand">grad-2000<br>stereo turntable</div>
+      </div>
+      <div class="record" id="record">
+        <div class="disc"><div class="label"><span>grad u ate</span></div></div>
+      </div>
+      <div class="cover" id="cover">
+        <div class="ct">brat<br>and it's<br>phu vinh’s<br>graduation ceremony<br>but also still<br>brat</div>
+        <div class="opening"></div>
+      </div>
+      <div class="arm" id="arm"><div class="weight"></div><div class="rod"></div><div class="head"></div></div>
+      <div class="notes"><i>♪</i><i>♫</i><i>♪</i></div>
+    </div>
+    <div class="stage-cap" id="cap">
+      <span class="np">now playing — <b id="npTitle"></b></span>
+      <span><span class="audio-hint">▶ nhấn bất kỳ đâu để bật âm thanh</span></span>
+    </div>
+  </section>
+
+  <!-- ================= INVITE ================= -->
+  <section class="s gate" id="invite">
+    <span class="floaty" style="left:44%;top:120px">✦</span>
+    <span class="floaty" style="right:8%;top:46%;animation-delay:1.2s">✦</span>
+    <span class="floaty" style="left:4%;bottom:12%;animation-delay:2.4s">✦</span>
+
+    <div class="inv-head reveal">
+      <h2 class="big">u r invited.</h2>
+      <div class="greet">gửi <span data-guest>bạn</span> thân mến,</div>
+      <div class="stamp"><div><strong>100%</strong>certified<br>graduate</div></div>
+      <img class="me" src="assets/images/sticker-vinh2.png" alt="phú vinh">
+    </div>
+
+    <div class="grid">
+      <div class="win w-hi reveal" style="text-transform:none">
+        <div class="win-bar"><span>hi.txt</span><span class="dots"><button data-min>–</button><button data-min>×</button></span></div>
+        <div class="win-body">
+          <h3>Tớ tốt nghiệp rồi. Thiệt đó.</h3>
+          <p>Sau 4 năm trời, vô số deadline, vài lần suýt bỏ cuộc và quá trời caffein thì tớ chính thức cầm trên tay bằng tốt nghiệp rồi nè. Ngày này sẽ không thể trọn vẹn nếu thiếu đi bạn, vậy nên tớ muốn mời cậu đến chung vui cùng mình</p>
+        </div>
+      </div>
+
+      <div class="win green w-who reveal" style="text-transform:none">
+        <div class="win-bar"><span>who.exe</span><span class="dots"><button data-min>–</button><button data-min>×</button></span></div>
+        <div class="win-body">
+          <p class="meta">Tân cử nhân</p>
+          <h3 style="font-weight:700;margin-bottom:2px">Hồ Phú Vinh</h3>
+          <p>Khoa Công nghệ thông tin</p>
+          <p class="meta">Trường Đại học Khoa học tự nhiên – Đại học Quốc gia Thành phố Hồ Chí Minh a.k.a HCMUS</p>
+          <p class="meta">Khoá 2022 – 2026</p>
+        </div>
+      </div>
+
+      <div class="win w-when reveal">
+        <div class="win-bar"><span>when.ics</span><span class="dots"><button data-min>–</button><button data-min>×</button></span></div>
+        <div class="win-body">
+          <h3 data-k="dateText" style="text-transform:none"></h3>
+          <p><span data-k="timeText"></span></p>
+          <div class="cd" id="cd">
+            <div><b id="cdD">00</b><span>ngày</span></div>
+            <div><b id="cdH">00</b><span>giờ</span></div>
+            <div><b id="cdM">00</b><span>phút</span></div>
+            <div><b id="cdS">00</b><span>giây</span></div>
+          </div>
+          <a class="btn" id="calBtn" href="#" target="_blank" rel="noopener">+ thêm vào google calendar</a>
+        </div>
+      </div>
+
+      <div class="win green w-where reveal">
+        <div class="win-bar"><span>where.map</span><span class="dots"><button data-min>–</button><button data-min>×</button></span></div>
+        <div class="win-body">
+          <p class="meta">địa điểm</p>
+          <h3 data-k="venue" style="text-transform:none;font-size:clamp(22px,2.4vw,32px)"></h3>
+          <p data-k="address" style="text-transform:none"></p>
+          <p style="margin-top:12px">✦ điểm hẹn: <span data-k="meet"></span></p>
+        </div>
+      </div>
+
+      <div class="win w-rsvp reveal">
+        <div class="win-bar"><span>rsvp.exe</span><span class="dots"><button data-min>–</button><button data-min>×</button></span></div>
+        <div class="win-body">
+          <h3>bạn có đến không?</h3>
+          <div class="rsvp-btns">
+            <button class="btn" data-rsvp="yes">có, tớ sẽ đến ✦</button>
+            <button class="btn ghost-btn" data-rsvp="no">tiếc quá, không kịp</button>
+          </div>
+          <div class="rsvp-out" id="rsvpOut"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MAP ================= -->
+  <section class="s" id="map">
+    <div class="bgtype blur">find me</div>
+    <h2 class="big blur" style="margin-bottom:40px">how 2 get here.</h2>
+    <div class="map-wrap">
+      <div>
+        <div class="map-card reveal">
+          <div class="win-bar"><span>map.exe</span><span class="dots"><button>–</button><button>×</button></span></div>
+          <div id="mapSlot"></div>
+        </div>
+        <div class="map-actions reveal">
+          <a class="btn" id="mapOpen" target="_blank" rel="noopener" href="#">mở google maps ↗</a>
+          <a class="btn ghost-btn" id="mapDir" target="_blank" rel="noopener" href="#">chỉ đường tới đây</a>
+        </div>
+      </div>
+      <div>
+        <div class="park" id="park"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THANKS ================= -->
+  <section class="s" id="thanks">
+    <div class="vframe" id="vframe">
+      <video id="thxVideo" src="assets/videos/thanks.mp4" poster="assets/images/thanks-poster.jpg" muted loop playsinline preload="metadata"></video>
+      <div class="over" aria-label="thank u for being part of this journey">
+        <div class="ln"><span>thank</span><span>u</span></div>
+        <div class="ln"><span>for</span><span>being</span></div>
+        <div class="ln"><span>part</span><span>of</span></div>
+        <div class="ln"><span>this</span><span>journey</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+/* =========================================================
+   CONFIG — sửa nội dung thiệp ở đây
+   ========================================================= */
+// thư mục nhạc trong repo (tên file giữ nguyên, được mã hoá URL khi phát)
+const MUSIC = "assets/brat and phu vinh’s graduation ceremony but also still brat/";
+const CONFIG = {
+  name:     "hồ phú vinh",
+  degree:   "cử nhân công nghệ thông tin",
+  school:   "trường đh khoa học tự nhiên – đhqg tp.hcm (hcmus) · khoá 2022 – 2026",
+  intro:    "sau 4 năm, vô số deadline, vài lần suýt bỏ cuộc và quá nhiều ly cà phê — tớ chính thức cầm bằng rồi. ngày này sẽ không trọn vẹn nếu thiếu bạn, nên tớ muốn mời bạn tới chung vui.",
+  eventISO: "2026-11-26T11:00:00+07:00",
+  durationHours: 2,
+  dateText: "Thứ năm, 26.11.2026",
+  timeText: "11:00 trưa",
+  venue:    "Trường Đại học Khoa học tự nhiên – Đại học Quốc gia Thành phố Hồ Chí Minh",
+  address:  "227 Nguyễn Văn Cừ, phường Chợ Quán, TP.HCM",
+  meet:     "giữa 2 hàng cây xanh, ngay sau cổng chính",
+  mapQuery: "Trường Đại học Khoa học Tự nhiên, 227 Nguyễn Văn Cừ, TP.HCM",
+  embedMap: false,   // true khi tự host web (trang trên claude.ai không cho nhúng google maps)
+  dress:    "brat green, trắng hoặc đen. không bắt buộc — mặc gì khiến bạn thấy là chính mình là được.",
+  contactUrl:   "https://www.facebook.com/hodinh.p/",
+  contactLabel: "Vinh",
+  parking: [
+    ["Bãi xe ĐH Khoa học Tự nhiên", "gửi ngay trong trường, đi bộ vài bước là tới 2 hàng cây. ngày lễ có thể đông → nên tới sớm.", ["xe máy", "gần nhất"], "Trường Đại học Khoa học Tự nhiên, 227 Nguyễn Văn Cừ"],
+    ["Bãi xe THPT chuyên Lê Hồng Phong", "235 Nguyễn Văn Cừ — ngay bên phải trường KHTN, đối diện Nowzone. gửi xong đi bộ sang cổng chính KHTN.", ["xe máy"], "Trường THPT chuyên Lê Hồng Phong, 235 Nguyễn Văn Cừ"],
+    ["Bãi xe Nowzone", "gửi ở hầm trung tâm thương mại, băng qua đường Nguyễn Văn Cừ rồi đi bộ tới cổng chính KHTN.", ["xe máy", "có mái che"], "Nowzone, 235 Nguyễn Văn Cừ, TP.HCM"],
+    ["Bãi xe ĐH Sư phạm", "vào cổng phụ của ĐH Sư phạm, cua vào là tới chỗ giữ xe — hoặc chạy vào tiếp, hỏi bảo vệ chỗ hầm xe. gửi xong đi bộ sang KHTN theo lối bên hông.", ["xe máy"], "Trường Đại học Sư phạm TP.HCM, 280 An Dương Vương"],
+    ["lười gửi xe?", "đặt grab / xanh sm / be tới thẳng cổng chính 227 Nguyễn Văn Cừ, đi vào là thấy 2 hàng cây.", ["đỡ mệt nhất"], null]
+  ],
+  photo: "assets/images/sticker-vinh1.png",
+  tracks: [
+    { title: "360", src: MUSIC + "01 360.m4a" },
+    { title: "Club classics", src: MUSIC + "02 Club classics.m4a" },
+    { title: "Club classics featuring bb tric", src: MUSIC + "03 Club classics featuring bb tric.m4a" },
+    { title: "Sympathy is a knife", src: MUSIC + "04 Sympathy is a knife.m4a" },
+    { title: "I might say something stupid", src: MUSIC + "05 I might say something stupid.m4a" },
+    { title: "Von dutch", src: MUSIC + "06 Von dutch.m4a" },
+    { title: "Von dutch a. g. cook remix feat", src: MUSIC + "07 Von dutch a. g. cook remix feat.m4a" },
+    { title: "Talk talk featuring troye sivan", src: MUSIC + "08 Talk talk featuring troye sivan.m4a" },
+    { title: "Everything is romantic", src: MUSIC + "09 Everything is romantic.m4a" },
+    { title: "Everything is romantic featurin", src: MUSIC + "10 Everything is romantic featurin.m4a" },
+    { title: "Apple", src: MUSIC + "11 Apple.m4a" },
+    { title: "Girl, so confusing featuring lo", src: MUSIC + "12 Girl, so confusing featuring lo.m4a" },
+    { title: "Guess featuring billie eilish", src: MUSIC + "13 Guess featuring billie eilish.m4a" },
+    { title: "B2b", src: MUSIC + "14 B2b.m4a" },
+    { title: "365", src: MUSIC + "15 365.m4a" },
+    { title: "365 featuring shygirl", src: MUSIC + "16 365 featuring shygirl.m4a" }
+  ]
+};
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const pad = n => String(n).padStart(2, "0");
+
+/* fill text */
+$$("[data-k]").forEach(el => { const v = CONFIG[el.dataset.k]; if (v != null) el.textContent = v; });
+/* tên khách: ?to=Minh  (hoặc #Minh) */
+const guest = (() => {
+  try {
+    const q = new URLSearchParams(location.search).get("to");
+    const h = decodeURIComponent((location.hash || "").slice(1));
+    return (q || h || "").replace(/[-_+]/g, " ").replace(/\s+/g, " ").trim().slice(0, 40);
+  } catch (e) { return ""; }
+})();
+if (guest) {
+  $$("[data-guest]").forEach(el => { el.textContent = guest; el.style.textTransform = "none"; });
+  document.title = "grad u ate — gửi " + guest;
+}
+
+/* barcode */
+(() => { const bc = $("#barcode"); for (let i = 0; i < 30; i++) { const b = document.createElement("b"); b.style.width = (Math.random() < .3 ? 3 : 1) + "px"; bc.appendChild(b); } })();
+
+/* marquees */
+["#barTop .track", "#barBot .track"].forEach(sel => {
+  const tr = $(sel); let h = "";
+  for (let i = 0; i < 16; i++) h += '<span>grad u ate</span><span class="dot">✦</span>';
+  tr.innerHTML = h + h;
+});
+
+/* photo + fallback graphic */
+const FALLBACK_PHOTO = "data:image/svg+xml;utf8," + encodeURIComponent(`
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 380'>
+<rect width='300' height='380' fill='#fff'/><rect x='12' y='12' width='276' height='356' fill='#89CC04'/>
+<g stroke='#000' stroke-width='6' fill='#fff' stroke-linejoin='round'>
+<path d='M58 368 C58 286 98 252 150 252 C202 252 242 286 242 368'/>
+<path d='M118 252 L150 300 L182 252' fill='none'/>
+<circle cx='150' cy='176' r='58'/></g>
+<path d='M128 176 h10 M162 176 h10' stroke='#000' stroke-width='6' stroke-linecap='round'/>
+<path d='M134 200 q16 14 32 0' stroke='#000' stroke-width='5' fill='none' stroke-linecap='round'/>
+<rect x='104' y='112' width='92' height='30' fill='#000'/>
+<polygon points='150,68 254,104 150,140 46,104' fill='#000'/>
+<path d='M150 104 L236 112 L236 168' stroke='#fff' stroke-width='5' fill='none'/>
+<rect x='228' y='164' width='16' height='26' fill='#fff' stroke='#000' stroke-width='3'/>
+<text x='26' y='44' font-family='Arial' font-size='20' fill='#000'>me :)</text>
+</svg>`);
+const uimg = $("#uimg");
+uimg.onerror = () => { uimg.onerror = null; uimg.src = FALLBACK_PHOTO; };
+uimg.src = CONFIG.photo;
+
+/* =========================================================
+   AUDIO ENGINE — nhạc tổng hợp bằng web audio
+   (thay bằng file mp3 qua CONFIG.tracks[i].src)
+   ========================================================= */
+const SONGS = [
+  { bpm:128, root:41, prog:[[0,3,7],[8,12,15],[3,7,10],[10,14,17]], kick:[0,4,8,12], clap:[4,12], hat:[2,6,10,14],
+    stab:[0,3,6,10,13], bass:[0,0,null,0,null,0,12,null,0,null,0,0,null,7,null,12], arp:null },
+  { bpm:140, root:43, prog:[[0,4,7],[9,12,16],[5,9,12],[7,11,14]], kick:[0,4,8,12], clap:[4,12], hat:"16",
+    stab:[0,8], bass:[0,null,12,null,0,null,12,null,0,null,12,null,0,null,12,7], arp:[0,1,2,1] },
+  { bpm:150, root:38, prog:[[0,3,7],[0,3,7],[5,8,12],[7,10,14]], kick:[0,6,10], clap:[8], hat:"8",
+    stab:[0,2,5,8,11,14], bass:[0,null,null,0,null,null,0,null,0,null,null,3,null,null,5,null], arp:[0,2,1,2] }
+];
+
+const Engine = {
+  ctx:null, master:null, bus:null, noise:null, el:null,
+  idx:0, step:0, next:0, timer:null, playing:false,
+  init(){
+    if (this.ctx) return;
+    const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+    const c = this.ctx = new AC();
+    this.master = c.createGain(); this.master.gain.value = 0.0001;
+    const comp = c.createDynamicsCompressor(); comp.threshold.value = -14; comp.ratio.value = 4;
+    this.master.connect(comp).connect(c.destination);
+    const buf = c.createBuffer(1, c.sampleRate, c.sampleRate), d = buf.getChannelData(0);
+    for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+    this.noise = buf;
+    c.onstatechange = () => UI.sync();
+  },
+  unlock(){
+    try { this.init(); if (this.ctx && this.ctx.state === "suspended") this.ctx.resume().then(() => UI.sync()).catch(() => {}); } catch(e){}
+    if (this.el && this.playing && this.el.paused) this.el.play().catch(() => {});
+  },
+  get running(){ const t = CONFIG.tracks[this.idx]; if (t.src) return this.el && !this.el.paused; return this.ctx && this.ctx.state === "running"; },
+  kick(t){ const c=this.ctx,o=c.createOscillator(),g=c.createGain();
+    o.frequency.setValueAtTime(165,t); o.frequency.exponentialRampToValueAtTime(42,t+.13);
+    g.gain.setValueAtTime(1,t); g.gain.exponentialRampToValueAtTime(.001,t+.32);
+    o.connect(g).connect(this.bus); o.start(t); o.stop(t+.35); },
+  hit(t,type,freq,dur,v){ const c=this.ctx,s=c.createBufferSource(),f=c.createBiquadFilter(),g=c.createGain();
+    s.buffer=this.noise; f.type=type; f.frequency.value=freq;
+    g.gain.setValueAtTime(v,t); g.gain.exponentialRampToValueAtTime(.001,t+dur);
+    s.connect(f).connect(g).connect(this.bus); s.start(t, Math.random()*.5); s.stop(t+dur+.02); },
+  tone(t,midi,dur,o={}){ const {type="sawtooth",v=.15,cut=1800,det=[0],q=1}=o; const c=this.ctx,g=c.createGain(),f=c.createBiquadFilter();
+    f.type="lowpass"; f.Q.value=q; f.frequency.setValueAtTime(cut,t); f.frequency.exponentialRampToValueAtTime(Math.max(140,cut*.25),t+dur);
+    g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(v,t+.008); g.gain.exponentialRampToValueAtTime(.0008,t+dur);
+    f.connect(g).connect(this.bus);
+    const hz = 440*Math.pow(2,(midi-69)/12);
+    det.forEach(dt=>{ const os=c.createOscillator(); os.type=type; os.frequency.value=hz; os.detune.value=dt; os.connect(f); os.start(t); os.stop(t+dur+.05); }); },
+  sched(step,t){
+    const S = SONGS[this.idx % SONGS.length], sd = 60/S.bpm/4;
+    const bar = Math.floor(step/16) % S.prog.length, s = step % 16, ch = S.prog[bar], r = S.root + ch[0];
+    if (S.kick.includes(s)) this.kick(t);
+    if (S.clap.includes(s)) { this.hit(t,"bandpass",1500,.2,.55); this.hit(t+.012,"bandpass",1900,.16,.4); }
+    const hatOn = S.hat === "16" ? true : S.hat === "8" ? s % 2 === 0 : S.hat.includes(s);
+    if (hatOn) this.hit(t,"highpass",8000,.045,s%4===2?.18:.09);
+    const b = S.bass[s]; if (b != null) this.tone(t, r + b, sd*.9, {type:"square", v:.16, cut:900, q:4});
+    if (S.stab.includes(s)) ch.forEach(n => this.tone(t, S.root+24+n, sd*1.6, {v:.045, cut:3400, det:[-14,0,14]}));
+    if (S.arp) this.tone(t, S.root+36+ch[S.arp[s%4]], sd*.8, {type:"square", v:.03, cut:5200});
+  },
+  tick(){ const c=this.ctx, sd=60/SONGS[this.idx%SONGS.length].bpm/4;
+    while (this.next < c.currentTime + .12) { this.sched(this.step, this.next); this.next += sd; this.step++; } },
+  play(){
+    this.unlock();
+    const tr = CONFIG.tracks[this.idx];
+    if (tr.src) {
+      this.el = new window.Audio(encodeURI(tr.src)); this.el.loop = false;
+      this.el.onplay = this.el.onpause = () => UI.sync();
+      this.el.onended = () => this.go(1, true);
+      this.el.play().catch(() => UI.sync());
+    } else {
+      if (!this.ctx) return;
+      const c = this.ctx;
+      this.bus = c.createGain(); this.bus.connect(this.master);
+      this.master.gain.cancelScheduledValues(c.currentTime);
+      this.master.gain.setTargetAtTime(.8, c.currentTime, .05);
+      this.step = 0; this.next = c.currentTime + .06;
+      clearInterval(this.timer); this.timer = setInterval(() => this.tick(), 25);
+    }
+    this.playing = true; UI.sync();
+  },
+  stop(){
+    clearInterval(this.timer); this.timer = null;
+    if (this.ctx && this.bus) { const c=this.ctx, b=this.bus; this.master.gain.setTargetAtTime(.0001, c.currentTime, .03); setTimeout(()=>{ try{b.disconnect()}catch(e){} }, 300); this.bus = null; }
+    if (this.el) { this.el.pause(); this.el = null; }
+    this.playing = false; UI.sync();
+  },
+  pause(){
+    if (this.el) { this.el.pause(); this.playing = false; UI.sync(); }
+    else this.stop();
+  },
+  toggle(){
+    if (this.playing) return this.pause();
+    if (this.el) { this.playing = true; this.el.play().catch(() => UI.sync()); UI.sync(); return; }
+    this.play();
+  },
+  go(d, force){ const was = force || this.playing, n = CONFIG.tracks.length; this.stop(); this.idx = (this.idx + d + n) % n; UI.skip(); UI.sync(); if (was) setTimeout(() => this.play(), 140); }
+};
+
+["pointerdown","keydown","touchend"].forEach(ev => document.addEventListener(ev, () => Engine.unlock(), {passive:true}));
+
+const UI = {
+  sync(){
+    const t = CONFIG.tracks[Engine.idx], n = pad(Engine.idx+1);
+    $("#pTitle").textContent = t.title; $("#pNum").textContent = n + "/" + pad(CONFIG.tracks.length);
+    $("#npTitle").textContent = t.title;
+    $("#pIcon").innerHTML = Engine.playing ? '<path d="M3 2h4v12H3zM9 2h4v12H9z" fill="currentColor"/>' : '<path d="M4 2v12l10-6z" fill="currentColor"/>';
+    $("#stage").classList.toggle("playing", Engine.playing);
+    $("#stage").classList.toggle("armrest", !!window.__seqDone && !Engine.playing);
+    $("#player").classList.toggle("isplaying", Engine.playing && !!Engine.running);
+    $("#cap").classList.toggle("needtap", Engine.playing && !Engine.running);
+  },
+  skip(){ const d = $("#record .disc"); d.animate([{translate:"0 0"},{translate:"-1.2cqw 0"},{translate:".8cqw 0"},{translate:"0 0"}],{duration:300}); }
+};
+$("#pPlay").onclick = () => Engine.toggle();
+$("#pNext").onclick = () => Engine.go(1);
+$("#pPrev").onclick = () => Engine.go(-1);
+
+/* =========================================================
+   HERO → SPLIT
+   ========================================================= */
+const root = document.documentElement;
+root.classList.add("locked");
+const hero = $("#hero"), title = $("#title"), U = $("#u");
+let phase = "intro", animating = false, didSplit = false;   // phase: intro | split | merged
+const BAR = () => (innerWidth < 820 ? 24 : 30);
+
+function clones(r, cs){
+  const mk = () => { const c = document.createElement("div"); c.className = "clone"; c.textContent = "grad u ate";
+    Object.assign(c.style, { left:r.left+"px", top:r.top+"px", width:r.width+"px", height:r.height+"px", fontSize:cs.fontSize, lineHeight:cs.lineHeight });
+    document.body.appendChild(c); return c; };
+  return [mk(), mk()];
+}
+function frames(r, fs){
+  const s = BAR()/fs, cy = r.top + r.height/2, half = 26;
+  return {
+    a:[{ transform:"translate(0,0) scale(1)", clipPath:"inset(0 0 50% 0)" },
+       { transform:"translate(-18px,-10px) scale(1)", clipPath:"inset(0 0 50% 0)", offset:.18 },
+       { transform:`translate(0,${half-cy}px) scale(${s})`, clipPath:"inset(0 0 0 0)" }],
+    b:[{ transform:"translate(0,0) scale(1)", clipPath:"inset(50% 0 0 0)" },
+       { transform:"translate(18px,10px) scale(1)", clipPath:"inset(50% 0 0 0)", offset:.18 },
+       { transform:`translate(0,${innerHeight-half-cy}px) scale(${s})`, clipPath:"inset(0 0 0 0)" }]
+  };
+}
+const EASE = "cubic-bezier(.75,0,.2,1)", DUR = 1150;
+
+function split(goToMain){
+  if (animating || phase === "split") return; animating = true;
+  const r = title.getBoundingClientRect(), cs = getComputedStyle(title), fs = parseFloat(cs.fontSize);
+  const [a,b] = clones(r, cs), f = frames(r, fs);
+  title.style.visibility = "hidden";
+  a.animate(f.a, { duration:DUR, easing:EASE, fill:"forwards" });
+  b.animate(f.b, { duration:DUR, easing:EASE, fill:"forwards" });
+  setTimeout(() => {
+    $("#barTop").classList.add("on"); $("#barBot").classList.add("on");
+    [a,b].forEach(c => c.animate([{opacity:1},{opacity:0}],{duration:300,fill:"forwards"}).onfinish = () => c.remove());
+    phase = "split"; animating = false;
+    if (!didSplit) { didSplit = true; root.classList.remove("locked"); runVinyl(); }
+    if (goToMain) { holdUntil = Date.now() + 1300; $("#main").scrollIntoView({ behavior:"smooth" }); setTimeout(checkScroll, 1350); }
+    else checkScroll();
+  }, DUR - 60);
+}
+
+function merge(){
+  if (animating || phase !== "split") return; animating = true;
+  const r = title.getBoundingClientRect(), cs = getComputedStyle(title), fs = parseFloat(cs.fontSize);
+  const [a,b] = clones(r, cs), f = frames(r, fs);
+  $("#barTop").classList.remove("on"); $("#barBot").classList.remove("on");
+  const opt = { duration:DUR*.85, easing:EASE, fill:"forwards" };
+  a.animate([...f.a].reverse().map(k => ({transform:k.transform, clipPath:k.clipPath})), opt);
+  b.animate([...f.b].reverse().map(k => ({transform:k.transform, clipPath:k.clipPath})), opt);
+  setTimeout(() => {
+    title.style.visibility = ""; U.classList.remove("on");
+    [a,b].forEach(c => c.remove());
+    phase = "merged"; animating = false; checkScroll();
+  }, DUR*.85);
+}
+
+function openFromU(){ U.classList.add("on"); setTimeout(() => split(true), 550); }
+U.addEventListener("click", openFromU);
+U.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openFromU(); } });
+addEventListener("wheel", e => { if (phase === "intro" && e.deltaY > 8) split(true); }, {passive:true});
+addEventListener("keydown", e => { if (phase === "intro" && ["ArrowDown","PageDown","Space"," "].includes(e.key) && document.activeElement !== U) { e.preventDefault(); split(true); } });
+let ty0 = null;
+addEventListener("touchstart", e => { ty0 = e.touches[0].clientY; }, {passive:true});
+addEventListener("touchmove", e => { if (phase === "intro" && ty0 != null && ty0 - e.touches[0].clientY > 40) split(true); }, {passive:true});
+/* cuộn ngược lên đầu → chữ ghép lại; cuộn xuống → tách ra lần nữa */
+let holdUntil = 0;
+function checkScroll(){
+  if (!didSplit || animating || Date.now() < holdUntil) return;
+  const y = scrollY, h = hero.offsetHeight;
+  if (phase === "split" && y < h * .3) merge();
+  else if (phase === "merged" && y > h * .55) split(false);
+}
+addEventListener("scroll", checkScroll, {passive:true});
+
+/* =========================================================
+   VINYL SEQUENCE
+   ========================================================= */
+let seqDone = false, seqTimers = [];
+function runVinyl(){
+  const st = $("#stage");
+  const steps = [
+    [500,  () => st.classList.add("s1")],          // đĩa trượt ra khỏi bìa
+    [1800, () => st.classList.add("s2")],          // đặt lên máy
+    [3450, () => st.classList.add("s3")],          // kim hạ xuống
+    [4600, () => { Engine.play(); }],              // quay + phát nhạc
+    [5300, () => $("#player").classList.add("on")],
+    [5900, () => { $("#invite").classList.remove("gate"); seqDone = true; window.__seqDone = true; }]
+  ];
+  steps.forEach(([ms, fn]) => seqTimers.push(setTimeout(fn, ms)));
+}
+$("#stage").addEventListener("click", () => {
+  if (seqDone || !didSplit) return;
+  seqTimers.forEach(clearTimeout);
+  const st = $("#stage"); st.classList.add("s1","s2","s3");
+  Engine.play(); $("#player").classList.add("on"); $("#invite").classList.remove("gate"); seqDone = true; window.__seqDone = true;
+});
+
+/* =========================================================
+   INVITE
+   ========================================================= */
+
+const evStart = new Date(CONFIG.eventISO);
+function tickCD(){
+  const ms = evStart - Date.now();
+  if (isNaN(ms)) return;
+  if (ms <= 0) { $("#cd").innerHTML = '<div style="grid-column:1/-1;padding:14px"><b>hôm nay / đã diễn ra ✦</b></div>'; return; }
+  const s = Math.floor(ms/1000);
+  $("#cdD").textContent = pad(Math.floor(s/86400)); $("#cdH").textContent = pad(Math.floor(s%86400/3600));
+  $("#cdM").textContent = pad(Math.floor(s%3600/60)); $("#cdS").textContent = pad(s%60);
+}
+tickCD(); setInterval(tickCD, 1000);
+
+(() => {
+  const f = d => d.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"");
+  const end = new Date(evStart.getTime() + CONFIG.durationHours*3600e3);
+  const p = new URLSearchParams({ action:"TEMPLATE", text:`lễ tốt nghiệp của ${CONFIG.name}`, dates:`${f(evStart)}/${f(end)}`,
+    location:`${CONFIG.venue}, ${CONFIG.address}`, details:"grad u ate ✦ hẹn gặp bạn ở đó!" });
+  $("#calBtn").href = "https://calendar.google.com/calendar/render?" + p.toString();
+})();
+
+$$("[data-rsvp]").forEach(b => b.onclick = () => {
+  const out = $("#rsvpOut"); out.classList.add("on");
+  const link = `<a class="fb" href="${CONFIG.contactUrl}" target="_blank" rel="noopener">${CONFIG.contactLabel} ↗</a>`;
+  out.innerHTML = b.dataset.rsvp === "yes"
+    ? `yay. nhắn tớ một câu để tớ giữ chỗ chụp ảnh cho bạn nhé: ${link}`
+    : `không sao cả. gửi tớ một lời chúc qua ${link} là tớ vui lắm rồi.`;
+});
+
+/* window buttons: thu nhỏ */
+$$("[data-min]").forEach(b => b.onclick = e => { e.stopPropagation(); b.closest(".win").classList.toggle("min"); });
+
+/* kéo thả cửa sổ (chuột) */
+let Z = 10;
+$$(".grid .win").forEach(w => {
+  const bar = w.querySelector(".win-bar"); let sx, sy, ox = 0, oy = 0, drag = false;
+  bar.addEventListener("pointerdown", e => { if (e.pointerType !== "mouse" || e.target.closest("button")) return;
+    drag = true; sx = e.clientX - ox; sy = e.clientY - oy; bar.setPointerCapture(e.pointerId); w.style.zIndex = ++Z; bar.style.cursor = "grabbing"; });
+  bar.addEventListener("pointermove", e => { if (!drag) return; ox = e.clientX - sx; oy = e.clientY - sy; w.style.translate = `${ox}px ${oy}px`; });
+  bar.addEventListener("pointerup", () => { drag = false; bar.style.cursor = ""; });
+});
+
+/* reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold:.15 });
+$$(".reveal").forEach(el => io.observe(el));
+
+/* =========================================================
+   MAP + PARKING
+   ========================================================= */
+const q = encodeURIComponent(CONFIG.mapQuery);
+$("#mapOpen").href = "https://www.google.com/maps/search/?api=1&query=" + q;
+$("#mapDir").href  = "https://www.google.com/maps/dir/?api=1&destination=" + q;
+if (CONFIG.embedMap) {
+  $("#mapSlot").innerHTML = `<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${q}&output=embed"></iframe>`;
+} else {
+  $("#mapSlot").innerHTML = `
+  <svg viewBox="0 0 760 500" font-family="Arial" style="text-transform:none" role="img" aria-label="Sơ đồ minh hoạ: ĐH Khoa học Tự nhiên, ĐH Sư phạm, THPT chuyên Lê Hồng Phong, Nowzone">
+    <defs><pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="#000" stroke-width="1" opacity=".18"/></pattern></defs>
+    <rect width="760" height="500" fill="#fff"/>
+    <!-- roads -->
+    <rect x="0" y="0" width="30" height="500" fill="#000"/>
+    <rect x="0" y="368" width="760" height="32" fill="#000"/>
+    <line x1="15" y1="0" x2="15" y2="140" stroke="#fff" stroke-width="1.5" stroke-dasharray="10 10"/><line x1="15" y1="262" x2="15" y2="368" stroke="#fff" stroke-width="1.5" stroke-dasharray="10 10"/><line x1="15" y1="400" x2="15" y2="500" stroke="#fff" stroke-width="1.5" stroke-dasharray="10 10"/>
+    <line x1="150" y1="384" x2="646" y2="384" stroke="#fff" stroke-width="1.5" stroke-dasharray="10 10"/>
+    <line x1="710" y1="384" x2="760" y2="384" stroke="#fff" stroke-width="1.5" stroke-dasharray="10 10"/>
+    <text transform="translate(20 252) rotate(-90)" fill="#fff" font-size="12">An Dương Vương</text>
+    <text x="44" y="388" fill="#fff" font-size="12">Nguyễn Văn Cừ</text>
+    <g fill="#fff">${[0,1,2,3,4,5,6].map(i=>`<rect x="${652+i*8}" y="372" width="4" height="24"/>`).join("")}</g>
+
+    <!-- ĐH Sư phạm -->
+    <rect x="46" y="16" width="158" height="38" fill="#fff" stroke="#000" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="56" y="40" font-size="12">bãi xe ĐHSP</text>
+    <rect x="30" y="22" width="16" height="26" fill="#89CC04" stroke="#000" stroke-width="2"/>
+    <text x="34" y="11" font-size="10">cổng phụ</text>
+    <rect x="46" y="66" width="158" height="290" fill="#fff" stroke="#000" stroke-width="2.5"/>
+    <text x="125" y="200" font-size="18" text-anchor="middle">Đại học</text>
+    <text x="125" y="224" font-size="18" text-anchor="middle">Sư phạm</text>
+
+    <!-- ĐH Khoa học Tự nhiên -->
+    <rect x="218" y="14" width="330" height="342" fill="#89CC04" stroke="#000" stroke-width="2.5"/>
+    <rect x="218" y="14" width="330" height="342" fill="url(#hatch)"/>
+    <text x="230" y="40" font-size="19" font-weight="700" letter-spacing="-.3">Đại học Khoa học Tự nhiên</text>
+    <text x="230" y="60" font-size="14" font-weight="700">227 Nguyễn Văn Cừ</text>
+    <rect x="392" y="136" width="40" height="214" fill="#fff" opacity=".75"/>
+    <g fill="#fff" stroke="#000" stroke-width="2">
+      <rect x="228" y="68" width="48" height="24"/>
+      <rect x="228" y="98" width="40" height="28"/><rect x="272" y="98" width="266" height="28"/>
+      <rect x="268" y="136" width="28" height="90"/><rect x="306" y="136" width="36" height="82" rx="14"/>
+      <rect x="352" y="136" width="28" height="90"/><rect x="444" y="136" width="28" height="90"/><rect x="500" y="136" width="36" height="104"/>
+      <rect x="268" y="240" width="82" height="106"/><rect x="472" y="256" width="64" height="52"/>
+    </g>
+    <g font-size="12" text-anchor="middle">
+      <text x="252" y="85">GĐ2</text><text x="405" y="117">F</text><text x="248" y="117">H</text>
+      <text x="282" y="186">C</text><text x="366" y="186">B</text><text x="458" y="186">A</text><text x="518" y="192">E</text>
+      <text x="309" y="297">I</text><text x="504" y="286">GĐ1</text>
+    </g>
+    <line x1="426" y1="196" x2="426" y2="228" stroke="#000" stroke-width="2"/><rect x="426" y="196" width="12" height="8" fill="#000"/>
+    <g fill="#89CC04" stroke="#000" stroke-width="2">${[256,279,302,325].map(y=>`<circle cx="372" cy="${y}" r="8"/><circle cx="452" cy="${y}" r="8"/>`).join("")}</g>
+    <rect x="392" y="350" width="40" height="10" fill="#fff" stroke="#000" stroke-width="2"/>
+    <text x="412" y="344" font-size="10" text-anchor="middle">cổng chính</text>
+    <g class="pin"><path d="M412 316 c-14 -18 -24 -28 -24 -40 a24 24 0 0 1 48 0 c0 12 -10 22 -24 40z" fill="#000"/><text x="412" y="282" font-size="15" fill="#89CC04" text-anchor="middle">★</text></g>
+
+    <!-- THPT chuyên Lê Hồng Phong -->
+    <g fill="#fff" stroke="#000" stroke-width="1.5">${[14,82,150,218,286].map(y=>`<rect x="558" y="${y}" width="30" height="62"/>`).join("")}</g>
+    <rect x="598" y="14" width="152" height="342" fill="#fff" stroke="#000" stroke-width="2.5"/>
+    <text x="674" y="150" font-size="15" text-anchor="middle">THPT chuyên</text>
+    <text x="674" y="172" font-size="15" text-anchor="middle">Lê Hồng Phong</text>
+    <text x="674" y="192" font-size="11" text-anchor="middle">235 Nguyễn Văn Cừ</text>
+
+    <!-- Nowzone -->
+    <rect x="598" y="414" width="152" height="70" fill="#fff" stroke="#000" stroke-width="2.5"/>
+    <text x="682" y="446" font-size="15" text-anchor="middle">Nowzone</text>
+    <text x="674" y="474" font-size="10" text-anchor="middle">TTTM · đối diện Lê Hồng Phong</text>
+
+    <!-- parking markers -->
+    ${[[506,318,1],[660,318,2],[606,422,3],[170,21,4]].map(([x,y,n])=>`<g><rect x="${x}" y="${y}" width="28" height="28" fill="#000"/><text x="${x+14}" y="${y+20}" fill="#fff" font-size="17" text-anchor="middle">${n}</text></g>`).join("")}
+
+    <!-- legend -->
+    <g transform="translate(46 410)" font-size="12">
+      <rect width="330" height="80" fill="#fff" stroke="#000" stroke-width="2"/>
+      <path d="M22 34 c-7 -9 -12 -14 -12 -20 a12 12 0 0 1 24 0 c0 6 -5 11 -12 20z" fill="#000"/>
+      <text x="22" y="19" font-size="9" fill="#89CC04" text-anchor="middle">★</text>
+      <text x="42" y="24">điểm hẹn</text>
+      ${[[12,46,1,"KHTN"],[160,46,2,"Lê Hồng Phong"],[12,66,3,"Nowzone"],[160,66,4,"ĐH Sư phạm"]].map(([x,y,n,t])=>`<rect x="${x}" y="${y-13}" width="18" height="18" fill="#000"/><text x="${x+9}" y="${y}" fill="#fff" font-size="12" text-anchor="middle">${n}</text><text x="${x+26}" y="${y}">bãi xe ${t}</text>`).join("")}
+    </g>
+  </svg>`;
+}
+$("#park").innerHTML = CONFIG.parking.map(([h, p, tags, mq], i) => `
+  <div class="pk reveal"><div class="pn">${mq ? i+1 : "→"}</div><div><h4>${h}</h4><p>${p}</p>${tags.map(t=>`<span class="tag">${t}</span>`).join("")}${mq ? `<a class="tag" style="background:#fff" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mq)}">xem trên maps ↗</a>` : ""}</div></div>`).join("");
+$$("#park .reveal").forEach(el => io.observe(el));
+
+/* =========================================================
+   THANK-YOU VIDEO
+   ========================================================= */
+(() => {
+  const v = $("#thxVideo");
+  new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) v.play().catch(()=>{}); else v.pause(); }), {threshold:.25}).observe(v);
+})();
+/* đĩa xoay khi phát, chậm dần khi dừng; nắm đĩa để xoay; nhấn cần kim để play/pause */
+(() => {
+  const st = $("#stage"), rec = $("#record"), disc = $("#record .disc");
+  let ang = 0, vel = 0, last = performance.now(), drag = null;
+  (function loop(t){
+    const dt = Math.min(.05, (t - last) / 1000); last = t;
+    if (!drag) {
+      const target = (Engine.playing && Engine.running) ? 200 : 0;
+      vel += (target - vel) * Math.min(1, dt * (target ? 1.6 : 1.1));
+      if (Math.abs(vel) < .3 && !target) vel = 0;
+      ang += vel * dt;
+    }
+    disc.style.rotate = (ang % 360) + "deg";
+    requestAnimationFrame(loop);
+  })(last);
+  const ready = () => !!window.__seqDone;
+  const angleAt = e => { const r = rec.getBoundingClientRect(); return Math.atan2(e.clientY - (r.top + r.height/2), e.clientX - (r.left + r.width/2)) * 180 / Math.PI; };
+  rec.addEventListener("pointerdown", e => {
+    if (!ready()) return; e.stopPropagation(); e.preventDefault();
+    rec.setPointerCapture(e.pointerId); rec.classList.add("grabbing");
+    drag = { a: angleAt(e), t: performance.now() }; vel = 0;
+  });
+  rec.addEventListener("pointermove", e => {
+    if (!drag) return;
+    const a = angleAt(e), now = performance.now();
+    let d = a - drag.a; if (d > 180) d -= 360; if (d < -180) d += 360;
+    ang += d; const dt = Math.max(.008, (now - drag.t) / 1000);
+    vel = vel * .6 + (d / dt) * .4;
+    drag.a = a; drag.t = now;
+  });
+  const end = () => { if (!drag) return; drag = null; rec.classList.remove("grabbing"); vel = Math.max(-1400, Math.min(1400, vel)); };
+  rec.addEventListener("pointerup", end); rec.addEventListener("pointercancel", end);
+  rec.addEventListener("click", e => { if (ready()) e.stopPropagation(); });
+  $("#arm").addEventListener("click", e => { if (!ready()) return; e.stopPropagation(); Engine.unlock(); Engine.toggle(); });
+  const mark = () => st.classList.toggle("ready", ready());
+  setInterval(mark, 500);
+})();
+UI.sync();
+</script>
+</body>
+</html>
