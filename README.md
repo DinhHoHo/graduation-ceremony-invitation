@@ -27,3 +27,14 @@ assets/brat and phu vinh’s …/   16 bài nhạc .m4a, phát theo thứ tự t
 ## Xem thử trên máy
 
 Mở terminal trong thư mục repo rồi chạy `python -m http.server 8000`, vào http://localhost:8000/?to=Minh
+
+## RSVP → Google Sheet
+
+1. Mở Google Sheet → **Tiện ích mở rộng → Apps Script**, xoá code mặc định, dán nội dung `apps-script/rsvp.gs`, bấm Lưu.
+2. **Triển khai → Tùy chọn triển khai mới →** chọn loại **Ứng dụng web**. Thực thi dưới dạng: **Tôi**; Người có quyền truy cập: **Bất kỳ ai** → Triển khai → cấp quyền.
+3. Copy **URL ứng dụng web** (kết thúc bằng `/exec`) và dán vào `rsvpEndpoint` trong `const CONFIG` của `index.html`, rồi push.
+
+- Link có `?to=Tên`: bấm "có, tớ sẽ đến" / "tiếc quá, không kịp" → ghi tên + đến/không đến.
+- Link không có tên: bấm "có, tớ sẽ đến" → nhập tên → Okay.
+- Mỗi tên chỉ được ghi 1 lần (sheet kiểm tra trùng tên, máy người xem cũng nhớ đã trả lời).
+- Sửa `rsvp.gs` thì phải **Triển khai → Quản lý triển khai → sửa → Phiên bản mới** thì mới có hiệu lực.
